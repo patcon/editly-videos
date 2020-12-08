@@ -33,6 +33,7 @@ jobs:
           docker cp editly:/outputs/my-video.mp4 ./generated/
 
       - uses: actions/upload-artifact@v2
+        if : success()
         with:
           name: my-video
           path: editly/generated/*
