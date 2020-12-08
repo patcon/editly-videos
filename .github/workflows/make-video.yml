@@ -3,11 +3,6 @@ name: Make Video
 
 on:
   push:
-    branches:
-      - master
-    paths:
-      - "./github/workflows/make-video.yml"
-      - "*.json5"
 
 jobs:
   make-video:
