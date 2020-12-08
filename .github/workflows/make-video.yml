@@ -22,7 +22,7 @@ jobs:
 
       - name: Build app via docker-compose
         working-directory: editly
-        run: docker-compose up --detached
+        run: docker-compose up --detach
 
       - name: Generate the video
         working-directory: editly
