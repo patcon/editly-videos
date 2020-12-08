@@ -33,10 +33,9 @@ jobs:
           docker cp editly:/outputs/my-video.mp4 ./generated/
 
       - uses: actions/upload-artifact@v2
-        working-directory: editly
         with:
           name: my-video
-          path: generated/*
+          path: editly/generated/*
 
       # For eventually running cypress for screenshots and video footage.
       - uses: actions/checkout@v2
