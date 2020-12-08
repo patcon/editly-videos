@@ -30,7 +30,7 @@ jobs:
         run: |
           docker cp inputs/. editly:/outputs/
           cd editly
-          docker-compose run editly bash -c "editly /outputs/my-video.json5 --out /outputs/my-video.mp4"
+          docker-compose run editly bash -c "cd /outputs && editly my-video.json5 --out my-video.mp4"
           mkdir generated
           docker cp editly:/outputs/my-video.mp4 ./generated/
 
