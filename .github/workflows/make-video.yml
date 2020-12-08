@@ -1,0 +1,47 @@
+# Changes to workflow name require changes to badge URL in README.md
+name: Make Video
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "*.json5"
+
+jobs:
+  make-video:
+    # Platform recommended in cypress-io/github-action docs.
+    runs-on: ubuntu-16.04
+    env:
+      # Use native docker command within docker-compose
+      COMPOSE_DOCKER_CLI_BUILD: 1
+      # Use buildkit to speed up docker command
+      DOCKER_BUILDKIT: 1
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: patcon/editly
+          ref: docker-containerized-cli
+          path: editly
+
+      - name: Build app via docker-compose
+        run: docker-compose up
+
+      - name: Generate the video
+        run: |
+          mkdir generated
+          docker cp my-video.json5 editly:/app
+          docker-compose run editly bash -c "editly my-video.json5 --out /outputs/my-video.mp4"
+          docker cp editly:/outputs/my-video.mp4 ./generated/
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-video
+          path: generated/*
+
+      # For eventually running cypress for screenshots and video footage.
+      - uses: actions/checkout@v2
+        with:
+          repository: pol-is/polis
+          ref: dev
+          path: polis
