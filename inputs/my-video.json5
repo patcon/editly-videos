@@ -1,0 +1,28 @@
+{
+  outPath: './my-video.mp4',
+  allowRemoteRequests: true,
+  defaults: {
+    transition: { name: 'linearblur', duration: 0.1 },
+    layer: { fontPath: './assets/Patua_One/PatuaOne-Regular.ttf' },
+    layerType: { 'fill-color': { color: '#00aa00' } }
+  },
+  audioFilePath: './music.m4a',
+  clips: [
+    { layers: [{ type: 'image', path: 'https://picsum.photos/400/400' }] },
+    { duration: 1, layers: [{ type: 'linear-gradient', colors: ['#02aab0', '#00cdac'] }] },
+    { duration: 1, layers: [{ type: 'radial-gradient', colors: ['#b002aa', '#ac00cd'] }] },
+    { layers: [{ type: 'image', path: 'https://picsum.photos/200/400' }] },
+    { duration: 1, layers: [{ type: 'linear-gradient' }] },
+    { layers: [{ type: 'image', path: 'https://picsum.photos/400/200' }] },
+    { duration: 1, layers: [{ type: 'radial-gradient' }] },
+    { duration: 2, layers: [
+      { type: 'rainbow-colors' },
+      { type: 'subtitle', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.' },
+      { type: 'title', position: 'top', text: 'Subtitles' },
+    ] },
+    { duration: 2, layers: [
+      { type: 'fill-color' },
+      { type: 'title', position: { x: 0, y: 1, originY: 'bottom' }, text: 'Custom position', zoomDirection: null },
+    ] },
+  ],
+}
