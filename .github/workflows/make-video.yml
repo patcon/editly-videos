@@ -18,8 +18,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
-          repository: patcon/editly
-          ref: docker-containerized-cli
+          repository: mifi/editly
           path: editly
 
       - name: Build app via docker-compose
