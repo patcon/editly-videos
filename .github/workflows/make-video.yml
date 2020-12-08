@@ -6,6 +6,7 @@ on:
     branches:
       - master
     paths:
+      - "./github/workflows/make-video.yml"
       - "*.json5"
 
 jobs:
