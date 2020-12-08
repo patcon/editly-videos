@@ -25,11 +25,11 @@ jobs:
         run: docker-compose up --detach
 
       - name: Generate the video
-        working-directory: editly
         run: |
+          docker cp my-video.json5 editly:/outputs
+          cd editly
+          docker-compose run editly bash -c "editly /outputs/my-video.json5 --out /outputs/my-video.mp4"
           mkdir generated
-          docker cp my-video.json5 editly:/app
-          docker-compose run editly bash -c "editly my-video.json5 --out /outputs/my-video.mp4"
           docker cp editly:/outputs/my-video.mp4 ./generated/
 
       - uses: actions/upload-artifact@v2
