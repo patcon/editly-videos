@@ -21,9 +21,11 @@ jobs:
           path: editly
 
       - name: Build app via docker-compose
+        working-directory: editly
         run: docker-compose up
 
       - name: Generate the video
+        working-directory: editly
         run: |
           mkdir generated
           docker cp my-video.json5 editly:/app
@@ -31,6 +33,7 @@ jobs:
           docker cp editly:/outputs/my-video.mp4 ./generated/
 
       - uses: actions/upload-artifact@v2
+        working-directory: editly
         with:
           name: my-video
           path: generated/*
